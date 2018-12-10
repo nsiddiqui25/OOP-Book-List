@@ -5,7 +5,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-   <title>Book List</title>
+   <title>Book List</title>m
+   <style>
+      .success, .error {
+         color: white;
+         padding: 5px;
+         margin: 5px 0 15px 0;
+      }
+
+      .success {
+         background: green;
+      }
+
+      .error {
+         background: red;
+      }
+   </style>
 </head>
 <body>
    <div class="container">
@@ -23,8 +38,10 @@
             <label for="isbn">ISBN #</label>
             <input type="text" id="isbn" class="u-full-width">
          </div>
+         <div>
+            <input type="submit" class="u-full-width" value="Submit">
+         </div>
       </form>
-      <hr>
       <table class="u-full-width">
          <thead>
             <tr>
