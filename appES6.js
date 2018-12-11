@@ -57,7 +57,7 @@ class UI {
    }
 }
 
-// Event Listener
+// Event Listener for Adding a Book
 document.getElementById('book-form').addEventListener('submit', 
    function(e){
       // console.log('test');
