@@ -8,7 +8,7 @@ function Book(title, author, isbn) {
 // UI Constructor - set of prototype methods to do things like add book to list, delete book, show alert, and other things that relate to the UI
 function UI() {}
 
-//Add book to list
+// Add book to list
 UI.prototype.addBookToList = function(book){
    const list = document.getElementById('book-list');
 
@@ -27,7 +27,7 @@ UI.prototype.addBookToList = function(book){
    // console.log(row);
 }
 
-//Show Alert
+// Show Alert
 UI.prototype.showAlert = function(message, className) {
    //Create div
    const div = document.createElement('div');
@@ -48,14 +48,22 @@ UI.prototype.showAlert = function(message, className) {
    }, 3000);
 }
 
-//Clear Fields
+// Delete Book
+UI.prototype.deleteBook = function(target) {
+   if(target.className === 'delete'){
+      target.parentElement.parentElement.remove();
+   }
+
+}
+
+// Clear Fields
 UI.prototype.clearFields = function(){
    document.getElementById('title').value = '';
    document.getElementById('author').value = '';
    document.getElementById('isbn').value = '';
 }
 
-//Event Listener
+// Event Listener
 document.getElementById('book-form').addEventListener('submit', 
    function(e){
       // console.log('test');
@@ -93,3 +101,19 @@ document.getElementById('book-form').addEventListener('submit',
       e.preventDefault();
    }
 );
+
+// Event Delegation to Delete Books
+document.getElementById('book-list').addEventListener('click', function(e){
+   // console.log(delete);
+
+   // Instantiate UI
+   const ui = new UI();
+
+   // Delete Book
+   ui.deleteBook(e.target);
+
+   // Show Alert once deleted
+   ui.showAlert('Book removed successfully!', 'success');
+
+   e.preventDefault();
+});
