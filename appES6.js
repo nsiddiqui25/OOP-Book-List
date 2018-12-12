@@ -60,15 +60,23 @@ class UI {
 // Local Storage Class
 class Store {
    static getBooks() {
-
+      let books;
+      if(localStorage.getItem('books') === null) {
+         books = [];
+      } else {
+         books = JSON.parse(localStorage.getItem('books'));
+      }
+      return books;
    }
 
    static displayBooks() {
 
    }
 
-   static addBook() {
-
+   static addBook(book) {
+      const books = Store.getBooks();
+      books.push(book);
+      localStorage.setItem('books', JSON.stringify(books));
    }
 
    static removeBook() {
@@ -102,6 +110,9 @@ document.getElementById('book-form').addEventListener('submit',
       } else {
          //Add book to list
          ui.addBookToList(book);
+
+         // Add to Local Storage
+         Store.addBookToList(book);
 
          // Show success
          ui.showAlert('Book Added!', 'success');
